@@ -19,6 +19,7 @@ Función: Gestiona la eliminación de tareas de la base de datos. Permite a los 
 8. MenuPrincipal
 Función: Proporciona una interfaz de navegación más detallada, permitiendo al usuario acceder a funciones adicionales, como listar todas las tareas o volver al menú principal.
 Base de Datos
+
 MySQL: Se utiliza para almacenar y gestionar las tareas. La base de datos tareas contiene una tabla tarea con campos para el ID de la tarea, descripción y prioridad.
 Funcionamiento General
 Inicio: El programa inicia presentando un menú principal, donde el usuario puede elegir entre las opciones CRUD.
