@@ -4,6 +4,7 @@ package Opciones;
 
 import java.util.Scanner;
 
+import CRUD.Delete;
 import CRUD.Read;
 import CRUD.Update;
 
@@ -109,13 +110,13 @@ public class Opciones {
                 read.imprimirTodasLasTareas();
                 break;
             case 3:
-                System.out.println("Caso 3: Editar Tarea.");
                 Update update = new Update ();
                 update.tareaAEditar();
                 break;
             case 4:
                 System.out.println("Caso 4: Borrar Tarea.");
-                // Lógica para borrar tarea
+                Delete delete = new Delete();
+                delete.tareaABorrar();
                 break;
             case 5:
                 System.out.println("Saliendo del programa...");
