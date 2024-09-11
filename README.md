@@ -1,28 +1,74 @@
-TODO List - Java Console Application
-Este proyecto es una aplicación de consola para gestionar una lista de tareas (TODO list) utilizando Java y MySQL. Permite a los usuarios realizar operaciones CRUD (Crear, Leer, Actualizar y Eliminar) sobre las tareas almacenadas en una base de datos.
+# Documentación del Proyecto de Gestión de Tareas
 
-Clases Principales
-1. Main
-Función: Punto de entrada del programa. Presenta el menú principal y gestiona la interacción inicial del usuario, redirigiéndolo a las distintas opciones disponibles para manejar las tareas.
-2. Tarea
-Función: Representa una tarea individual. Contiene atributos como id_tarea, descripcion, y prioridad. Proporciona métodos para obtener y establecer estos atributos.
-3. Opciones
-Función: Contiene el menú principal y las opciones disponibles para el usuario. Desde aquí, se redirige a las funciones CRUD específicas.
-4. Create
-Función: Proporciona métodos para añadir nuevas tareas a la base de datos. Interactúa con la base de datos MySQL para insertar nuevos registros.
-5. Read
-Función: Ofrece funcionalidades para leer y mostrar tareas desde la base de datos. Incluye métodos para leer una tarea específica o todas las tareas, así como para imprimirlas en la consola.
-6. Update
-Función: Permite actualizar tareas existentes en la base de datos. Los usuarios pueden modificar la descripción y la prioridad de una tarea específica.
-7. Delete
-Función: Gestiona la eliminación de tareas de la base de datos. Permite a los usuarios eliminar una tarea seleccionada por su ID.
-8. MenuPrincipal
-Función: Proporciona una interfaz de navegación más detallada, permitiendo al usuario acceder a funciones adicionales, como listar todas las tareas o volver al menú principal.
-Base de Datos
+Este proyecto es una aplicación de gestión de tareas implementada en Java que permite crear, leer, actualizar y eliminar tareas en una base de datos MySQL. A continuación, se proporciona una descripción detallada de cada componente del proyecto y sus métodos.
 
-MySQL: Se utiliza para almacenar y gestionar las tareas. La base de datos tareas contiene una tabla tarea con campos para el ID de la tarea, descripción y prioridad.
-Funcionamiento General
-Inicio: El programa inicia presentando un menú principal, donde el usuario puede elegir entre las opciones CRUD.
-Interacción: Dependiendo de la opción seleccionada, se llama a la clase correspondiente para manejar la acción (Crear, Leer, Actualizar o Eliminar).
-Conexión: Cada operación realiza una conexión con la base de datos MySQL para realizar la acción solicitada.
-Continuación: Tras completar una operación, el usuario puede optar por realizar otra acción o salir del programa.
+## Índice
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Clase Create](#clase-create)
+- [Clase Read](#clase-read)
+- [Clase Update](#clase-update)
+- [Clase Delete](#clase-delete)
+- [Clase Opciones](#clase-opciones)
+
+## Estructura del Proyecto
+
+El proyecto está organizado en paquetes que corresponden a las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) y opciones de usuario. A continuación se describe cada clase principal del proyecto.
+
+## Clase Create
+
+La clase `Create` maneja la creación de nuevas tareas en la base de datos.
+
+### Métodos
+- **crearTarea(String descripcion, int prioridad)**: Crea una nueva tarea en la base de datos con la descripción y prioridad proporcionadas.
+
+## Clase Read
+
+La clase `Read` se encarga de leer tareas desde la base de datos.
+
+### Métodos
+- **leerTarea(int id_tarea)**: Lee una tarea específica de la base de datos utilizando su ID.
+- **leerTodasLasTareas()**: Obtiene y devuelve una lista de todas las tareas en la base de datos.
+- **imprimirTodasLasTareas()**: Imprime todas las tareas en la consola.
+- **preguntarContinuar()**: Pregunta al usuario si desea realizar otra acción.
+- **tareaID(Scanner sc)**: Permite al usuario ingresar el ID de una tarea específica para visualizarla.
+
+## Clase Update
+
+La clase `Update` gestiona la actualización de tareas existentes.
+
+### Métodos
+- **tareaAEditar()**: Solicita al usuario el ID de la tarea que desea editar y llama a métodos para realizar la actualización.
+- **confirmarYActualizar(int idTarea, String nuevaDescripcion, int nuevaPrioridad)**: Pide confirmación antes de actualizar una tarea en la base de datos.
+
+## Clase Delete
+
+La clase `Delete` maneja la eliminación de tareas en la base de datos.
+
+### Métodos
+- **borrarTarea(int id_tarea)**: Elimina una tarea de la base de datos por su ID.
+- **tareaABorrar()**: Solicita al usuario que seleccione una tarea para borrar.
+- **opcionesTareaBorrar()**: Muestra un menú con opciones para introducir el ID de la tarea directamente o ver todas las tareas disponibles antes de borrar.
+- **confirmarYBorrar(int idTarea)**: Pide confirmación al usuario antes de eliminar la tarea.
+- **leerTodasLasTareas()**: Obtiene una lista de todas las tareas desde la base de datos.
+
+## Clase Opciones
+
+La clase `Opciones` muestra un menú para que el usuario seleccione la acción que desea realizar.
+
+### Métodos
+- **ListaOpciones()**: Muestra un menú principal con opciones para crear, ver, editar, borrar tareas o salir del programa.
+- **OpcionEscogida()**: Maneja la opción seleccionada por el usuario y devuelve si el menú debe continuar mostrándose.
+- **confirmarOpcion(int OpcionElegidaEnNumero)**: Pide confirmación al usuario para la opción seleccionada y ejecuta la acción correspondiente.
+- **ejecutarOpcion(int OpcionConfirmada)**: Ejecuta la acción correspondiente según la opción confirmada por el usuario.
+
+## Uso
+
+Para utilizar el programa, simplemente ejecute la aplicación y siga las opciones del menú para gestionar sus tareas. Asegúrese de que la base de datos MySQL esté configurada correctamente y que las credenciales sean válidas.
+
+## Contribuciones
+
+Las contribuciones son bienvenidas. Si desea colaborar en el proyecto, por favor, envíe un pull request o abra un issue en el repositorio.
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT. Consulte el archivo `LICENSE` para más detalles.
