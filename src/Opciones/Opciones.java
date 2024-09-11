@@ -3,6 +3,7 @@ package Opciones;
 import java.util.Scanner;
 
 import CRUD.Read;
+import CRUD.Update;
 
 public class Opciones {
 
@@ -74,17 +75,16 @@ public class Opciones {
     public static void ejecutarOpcion(int OpcionConfirmada) {
         switch (OpcionConfirmada) {
             case 1:
-                System.out.println("Caso 1: Crear Tarea.");
                 Opcion_Crear.Crear_Tarea();  // Lógica para crear tarea
                 break;
             case 2:
-                System.out.println("Caso 2: Ver Tareas.");
                 Read read = new Read ();
                 read.imprimirTodasLasTareas();
                 break;
             case 3:
                 System.out.println("Caso 3: Editar Tarea.");
-                // Lógica para editar tarea
+                Update update = new Update ();
+                update.tareaAEditar();
                 break;
             case 4:
                 System.out.println("Caso 4: Borrar Tarea.");
