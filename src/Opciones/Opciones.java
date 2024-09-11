@@ -83,14 +83,14 @@ public class Opciones {
             case "sí":
             case "s":
                 ejecutarOpcion(OpcionElegidaEnNumero);
-                return true;  // Seguir mostrando el menú
+                return true;  
             case "no":
             case "n":
                 System.out.println("Volviendo al menú principal.");
                 return true;  
             default:
                 System.out.println("Respuesta no válida, por favor introduzca S o N.");
-                return confirmarOpcion(OpcionElegidaEnNumero);  // Volver a pedir confirmación sin recursividad
+                return confirmarOpcion(OpcionElegidaEnNumero);
         }
     }
     
@@ -103,7 +103,7 @@ public class Opciones {
     public static void ejecutarOpcion(int OpcionConfirmada) { 
     	switch (OpcionConfirmada) {
             case 1:
-                Opcion_Crear.Crear_Tarea();  // Lógica para crear tarea
+                Opcion_Crear.Crear_Tarea();
                 break;
             case 2:
                 Read read = new Read ();
@@ -114,14 +114,13 @@ public class Opciones {
                 update.tareaAEditar();
                 break;
             case 4:
-                System.out.println("Caso 4: Borrar Tarea.");
                 Delete delete = new Delete();
                 delete.tareaABorrar();
                 break;
             case 5:
                 System.out.println("Saliendo del programa...");
-                scanner.close();  // Cerrar el scanner antes de salir
-                System.exit(0);   // Salir del programa
+                scanner.close();
+                System.exit(0);
                 break;
             default:
                 System.out.println("Opción no válida.");
