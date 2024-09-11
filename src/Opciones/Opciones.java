@@ -1,3 +1,5 @@
+
+
 package Opciones;
 
 import java.util.Scanner;
@@ -5,16 +7,23 @@ import java.util.Scanner;
 import CRUD.Read;
 import CRUD.Update;
 
+/**
+ * La clase {@code Opciones} maneja el menú principal y la navegación entre diferentes opciones.
+ */
+
 public class Opciones {
 
-    private static Scanner scanner = new Scanner(System.in); // Mantener el Scanner abierto
+    private static Scanner scanner = new Scanner(System.in); 
+    
+    /**
+     * Muestra el menú principal y gestiona la navegación.
+     */
+    
+    public static void ListaOpciones() { 
+    	boolean continuar = true;
 
-    public static void ListaOpciones() {
-        boolean continuar = true;
-
-        // Bucle que se repetirá hasta que el usuario decida salir
         while (continuar) {
-            // Mostrar las opciones disponibles
+        	
             System.out.println("Bienvenido a listas pendientes.");
             System.out.println("¿Qué desea hacer?");
             System.out.println("1- Crear Tareas");
@@ -23,38 +32,50 @@ public class Opciones {
             System.out.println("4- Borrar tarea");
             System.out.println("5- Salir");
 
-            continuar = OpcionEscogida();  // El bucle continuará mientras el usuario no elija salir
+            continuar = OpcionEscogida();
         }
     }
-
+    
+    /**
+     * Lee la opción seleccionada por el usuario y llama a {@code confirmarOpcion()}.
+     *
+     * @return {@code true} si se debe continuar mostrando el menú, {@code false} si se debe salir.
+     */
+    
     public static boolean OpcionEscogida() {
-        try {
+    	try {
             System.out.print("Introduzca una opción: ");
             int opcionIntroducida = scanner.nextInt();
 
-            // Llamar a confirmarOpcion según la opción seleccionada
             switch (opcionIntroducida) {
                 case 1:
                 case 2:
                 case 3:
                 case 4:
                 case 5:
-                    return confirmarOpcion(opcionIntroducida);  // Devolver si continúa o no
+                    return confirmarOpcion(opcionIntroducida);
                 default:
                     System.out.println("El valor introducido no es correcto.");
-                    return true;  // Continuar mostrando las opciones
+                    return true;
             }
         } catch (Exception e) {
             System.out.println("Entrada inválida. Inténtelo de nuevo.");
             scanner.nextLine(); // Limpiar el buffer
-            return true;  // Continuar en el menú de opciones
+            return true;
         }
     }
+    
+    /**
+     * Solicita confirmación del usuario para continuar con la opción seleccionada.
+     *
+     * @param OpcionElegidaEnNumero La opción elegida por el usuario.
+     * @return {@code true} si se debe continuar mostrando el menú, {@code false} si se debe salir.
+     */
+    
+    public static boolean confirmarOpcion(int OpcionElegidaEnNumero) { 
+    	System.out.println("Usted ha elegido la opción " + OpcionElegidaEnNumero + ". ¿Desea continuar? (S/N)");
 
-    public static boolean confirmarOpcion(int OpcionElegidaEnNumero) {
-        System.out.println("Usted ha elegido la opción " + OpcionElegidaEnNumero + ". ¿Desea continuar? (S/N)");
-
-        String respuesta = scanner.next().toLowerCase(); // Normalizar a minúsculas
+        String respuesta = scanner.next().toLowerCase();
 
         switch (respuesta) {
             case "si":
@@ -65,15 +86,21 @@ public class Opciones {
             case "no":
             case "n":
                 System.out.println("Volviendo al menú principal.");
-                return true;  // Volver al menú de opciones
+                return true;  
             default:
                 System.out.println("Respuesta no válida, por favor introduzca S o N.");
                 return confirmarOpcion(OpcionElegidaEnNumero);  // Volver a pedir confirmación sin recursividad
         }
     }
-
-    public static void ejecutarOpcion(int OpcionConfirmada) {
-        switch (OpcionConfirmada) {
+    
+    /**
+     * Ejecuta la lógica correspondiente para la opción confirmada por el usuario.
+     *
+     * @param OpcionConfirmada La opción confirmada por el usuario.
+     */
+    
+    public static void ejecutarOpcion(int OpcionConfirmada) { 
+    	switch (OpcionConfirmada) {
             case 1:
                 Opcion_Crear.Crear_Tarea();  // Lógica para crear tarea
                 break;

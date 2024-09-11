@@ -14,8 +14,20 @@ import java.util.logging.Logger;
 
 import Opciones.Opciones;
 
-public class Update {
+/**
+ * La clase {@code Update} maneja la actualización de tareas existentes en la base de datos.
+ */
 
+public class Update {
+	
+	/**
+     * Actualiza una tarea en la base de datos.
+     *
+     * @param id_tarea          El ID de la tarea a actualizar.
+     * @param nuevaDescripcion  La nueva descripción de la tarea.
+     * @param nuevaPrioridad    La nueva prioridad de la tarea.
+     */
+	
 	public void editarTarea(int id_tarea, String nuevaDescripcion, int nuevaPrioridad) {
 	    String driver = "com.mysql.cj.jdbc.Driver";
 	    String url = "jdbc:mysql://localhost:3306/tareas";
@@ -56,11 +68,21 @@ public class Update {
 	    }
 	}
 	
-	public void tareaAEditar () {
+	/**
+     * Solicita al usuario qué tarea desea editar.
+     */
+	
+	public void tareaAEditar () { 
+		
 		System.out.println("Que tarea desea editar?");
 		opcionesTareaEditar();
 		
 	}
+	
+	/**
+     * Muestra opciones para editar una tarea, ya sea introduciendo el ID directamente o viendo todas las tareas.
+     */
+
 	public void opcionesTareaEditar() {
 	    Scanner sc = new Scanner(System.in);
 	    int opcion = 0;
@@ -119,7 +141,14 @@ public class Update {
 	    }
 	}
 	
-	public Tarea leerTarea(int id_tarea) {
+	/**
+     * Lee una tarea específica de la base de datos por su ID.
+     *
+     * @param id_tarea El ID de la tarea a leer.
+     * @return Un objeto {@code Tarea} con los datos leídos, o {@code null} si no se encuentra.
+     */
+	
+	public Tarea leerTarea(int id_tarea) { 
         String driver = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/tareas";
         String user = "root";
@@ -162,51 +191,28 @@ public class Update {
 
         return t;
     }
+	 
+	/**
+     * Lee todas las tareas de la base de datos.
+     *
+     * @return Una lista de objetos {@code Tarea} con todas las tareas.
+     */
 	
-	public List<Tarea> leerTodasLasTareas() {
-        String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/tareas";
-        String user = "root";
-        String pass = "";
-        Connection conn = null;
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-
-        List<Tarea> tareas = new ArrayList<>();
-
-        try {
-            Class.forName(driver);
-            conn = DriverManager.getConnection(url, user, pass);
-
-            String query = "SELECT * FROM tarea";
-            ps = conn.prepareStatement(query);
-            rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Tarea t = new Tarea();
-                t.setId_tarea(rs.getInt("id_tarea"));
-                t.setDescripcionTarea(rs.getString("descripcion"));
-                t.setPrioridadTarea(rs.getInt("prioridad"));
-                tareas.add(t);
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Tarea.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (rs != null) rs.close();
-                if (ps != null) ps.close();
-                if (conn != null) conn.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Tarea.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        return tareas;
+	public List<Tarea> leerTodasLasTareas() { 
+				
+		Read read = new Read ();
+		return read.leerTodasLasTareas();
+        
     }
+	
+	/**
+     * Solicita al usuario la nueva descripción y prioridad de una tarea para actualizarla.
+     *
+     * @param idTarea El ID de la tarea a editar.
+     */
+	
 	public void datosAEditar(int idTarea) {
+		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Introduce la descripcion a editar: ");
 		String nuevaDescripcion = sc.nextLine();

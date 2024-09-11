@@ -10,9 +10,20 @@ import java.util.logging.Logger;
 
 import Opciones.Opciones;
 
-public class Read {
+/**
+ * La clase {@code Read} maneja la lectura de tareas desde la base de datos.
+ */
 
-    public Tarea leerTarea(int id_tarea) {
+public class Read {
+	
+	/**
+     * Lee una tarea específica de la base de datos por su ID.
+     *
+     * @param id_tarea El ID de la tarea a leer.
+     * @return Un objeto {@code Tarea} con los datos leídos, o {@code null} si no se encuentra.
+     */
+	
+    public Tarea leerTarea(int id_tarea) { /*Recupera una tarea específica de la base de datos basándose en el ID proporcionado. Devuelve un objeto Tarea con la información de la tarea encontrada.*/
         String driver = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/tareas";
         String user = "root";
@@ -55,8 +66,15 @@ public class Read {
 
         return t;
     }
-
+    
+    /**
+     * Lee todas las tareas de la base de datos.
+     *
+     * @return Una lista de objetos {@code Tarea} con todas las tareas.
+     */
+    
     public List<Tarea> leerTodasLasTareas() {
+
         String driver = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/tareas";
         String user = "root";
@@ -99,9 +117,13 @@ public class Read {
 
         return tareas;
     }
-
+    
+    /**
+     * Imprime todas las tareas en la consola.
+     */
+    
     public void imprimirTodasLasTareas() {
-        List<Tarea> tareas = leerTodasLasTareas();
+    	List<Tarea> tareas = leerTodasLasTareas();
         for (Tarea tarea : tareas) {
             System.out.println("ID: " + tarea.getId_tarea());
             System.out.println("Descripción: " + tarea.getDescripcionTarea());
@@ -110,9 +132,13 @@ public class Read {
         }
         preguntarContinuar();
     }
-
+    
+    /**
+     * Pregunta al usuario si desea realizar otra acción o volver al menú principal.
+     */
+    
     public void preguntarContinuar() {
-        Scanner sc = new Scanner(System.in);
+    	Scanner sc = new Scanner(System.in);
         int opcion = 0;
 
         while (true) {
@@ -137,6 +163,12 @@ public class Read {
             }
         }
     }
+    
+    /**
+     * Solicita al usuario el ID de una tarea y muestra la tarea correspondiente.
+     *
+     * @param sc El objeto {@code Scanner} para leer la entrada del usuario.
+     */
 
     public void tareaID(Scanner sc) {
         int id_tarea = 0;

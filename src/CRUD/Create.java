@@ -10,6 +10,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import Opciones.Opcion_Crear;
 
+/**
+ * La clase {@code Create} maneja la creación de nuevas tareas en la base de datos.
+ */
+
 public class Create {
 
     String driver ="com.mysql.cj.jdbc.Driver";
@@ -21,8 +25,14 @@ public class Create {
     PreparedStatement ps=null;
     ResultSet rs=null;
     
-	public void crearTarea(String descripcion, int prioridad){
-       
+    /**
+     * Crea una nueva tarea en la base de datos.
+     *
+     * @param descripcion La descripción de la tarea.
+     * @param prioridad   La prioridad de la tarea (del 1 al 5).
+     */
+    
+	public void crearTarea(String descripcion, int prioridad){ 
 		
 		try{
             
